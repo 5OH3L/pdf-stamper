@@ -196,10 +196,10 @@ def main(page: ft.Page):
                 ft.Text("Exact Image Replica Stamper", size=22, weight="bold"),
                 ft.Text("Upload a PDF. Injects the rich green tick shifted perfectly to match the exact target image positioning."),
                 ft.Divider(),
-                ft.ElevatedButton("1. Choose PDF File", icon=ft.Icons.UPLOAD_FILE, on_click=lambda _: upload_picker.pick_files(allowed_extensions=["pdf"])),
+                ft.Button("1. Choose PDF File", icon=ft.Icons.UPLOAD_FILE, on_click=lambda _: upload_picker.pick_files(allowed_extensions=["pdf"])),
                 file_name_text,
                 password_input,
-                ft.ElevatedButton("2. Apply Stamp & Save", icon=ft.Icons.SAVE, on_click=lambda _: save_picker.save_file(allowed_extensions=["pdf"], file_name="image_replica_stamp.pdf")),
+                ft.Button("2. Apply Stamp & Save", icon=ft.Icons.SAVE, on_click=lambda _: save_picker.save_file(allowed_extensions=["pdf"], file_name="image_replica_stamp.pdf")),
                 status_text
             ], spacing=20, alignment=ft.MainAxisAlignment.START)
         )
