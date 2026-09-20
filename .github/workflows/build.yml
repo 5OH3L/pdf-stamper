@@ -1,7 +1,7 @@
 name: Build Android APK
 
 on:
-  workflow_dispatch: # Allows you to run this manually
+  workflow_dispatch: 
 
 jobs:
   build:
@@ -15,12 +15,19 @@ jobs:
         with:
           python-version: '3.11'
 
+      # Sets up the exact Java version required for Android/Flutter builds
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # Added --module-name app to tell Flet to look for app.py instead of main.py
       - name: Build APK with Flet
-        # The 'yes |' automatically answers 'y' to Flet's installation prompts
-        run: yes | flet build apk
+        run: yes | flet build apk --module-name app
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
