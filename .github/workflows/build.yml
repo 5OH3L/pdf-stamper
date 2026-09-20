@@ -19,7 +19,8 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Build APK with Flet
-        run: flet build apk
+        # The 'yes |' automatically answers 'y' to Flet's installation prompts
+        run: yes | flet build apk
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
